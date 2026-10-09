@@ -250,7 +250,7 @@ const App = {
 
     /* 头图：本地图优先，无则异步补维基网图 */
     const hero = $("#bird-detail .detail-wiki");
-    const local = photoMapOf(b.name);   /* photos/ 实拍映射 */
+    const local = this.photoMapOf(b.name);   /* photos/ 实拍映射 */
     if (local) hero.outerHTML = `<img class="detail-hero" src="${esc(local)}" alt="${esc(b.name)}">`;
     else birdPhoto(b.name, b.latin).then(url => {
       if (url && hero.isConnected) hero.innerHTML = `<img src="${esc(url)}" alt="${esc(b.name)}" loading="lazy" onerror="birdPhotoFail(this)">`;
