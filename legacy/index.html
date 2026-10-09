@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#3d8b6f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>我们的观鸟日记 · 慈溪</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- 顶部栏（桌面端导航） -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand" onclick="go('home')">
+      <span class="brand-emoji">🪶</span>
+      <span class="brand-text">我们的观鸟日记</span>
+      <span class="brand-sub">慈溪 · 杭州湾</span>
+    </div>
+    <nav class="topnav">
+      <button class="navlink active" data-page="home" onclick="go('home')">🏠 首页</button>
+      <button class="navlink" data-page="records" onclick="go('records')">📖 观鸟记录</button>
+      <button class="navlink" data-page="birds" onclick="go('birds')">🪶 鸟种图鉴</button>
+      <button class="navlink" data-page="map" onclick="go('map')">🗺️ 观鸟地图</button>
+      <button class="navlink" data-page="memories" onclick="go('memories')">💞 我们的回忆</button>
+    </nav>
+    <button class="icon-btn" onclick="openSettings()" title="设置">⚙️</button>
+  </div>
+</header>
+
+<main id="app">
+
+  <!-- ============ 首页 ============ -->
+  <section class="page active" id="page-home">
+    <div class="hero">
+      <img class="hero-img" src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=serene%20coastal%20wetland%20at%20golden%20dawn%2C%20flocks%20of%20white%20egrets%20flying%20over%20golden%20reed%20marshes%2C%20soft%20pink%20sky%2C%20distant%20ducks%20on%20calm%20water%2C%20romantic%20peaceful%20atmosphere%2C%20cinematic%20nature%20photography&image_size=landscape_16_9" alt="杭州湾湿地晨曦">
+      <div class="hero-overlay">
+        <p class="hero-kicker">慈溪 · 杭州湾湿地</p>
+        <h1 class="hero-title" id="heroTitle">我们的观鸟日记</h1>
+        <p class="hero-sub" id="heroSub">把每一次抬头看见的翅膀，都写进我们的故事</p>
+      </div>
+      <div class="hero-birds" aria-hidden="true">🕊️ 🦆 🦅</div>
+    </div>
+
+    <div class="stats-row" id="statsRow"></div>
+
+    <div class="quicknav">
+      <button onclick="go('map')"><span>🗺️</span><i>观鸟地图</i></button>
+      <button onclick="go('birds')"><span>🪶</span><i>鸟种图鉴</i></button>
+      <button onclick="go('records')"><span>📖</span><i>全部记录</i></button>
+      <button onclick="go('memories')"><span>💞</span><i>我们的回忆</i></button>
+    </div>
+
+    <div class="home-grid">
+      <div class="card lucky-card">
+        <div class="card-head">
+          <h2>✨ 今日鸟运</h2>
+          <span class="card-tag" id="luckyDate"></span>
+        </div>
+        <div id="luckyBird"></div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <h2>🕘 最近的观鸟</h2>
+          <button class="link-btn" onclick="go('records')">全部记录 →</button>
+        </div>
+        <div id="recentRecords"></div>
+      </div>
+    </div>
+
+    <div class="welcome-card card" id="welcomeCard" style="display:none">
+      <h2>🐦 欢迎来到你们的小站</h2>
+      <p>这里记录你们在慈溪的每一次观鸟。先点击下方按钮，写下第一条记录吧；别忘了点右上角 ⚙️ 填上你们的名字和纪念日。</p>
+      <button class="btn btn-primary" onclick="openRecordForm()">＋ 写下第一条观鸟记录</button>
+    </div>
+
+    <button class="fab" onclick="openRecordForm()" title="新增观鸟记录">＋</button>
+  </section>
+
+  <!-- ============ 观鸟记录 ============ -->
+  <section class="page" id="page-records">
+    <div class="page-head">
+      <h1>📖 观鸟记录</h1>
+      <button class="btn btn-primary" onclick="openRecordForm()">＋ 新记录</button>
+    </div>
+    <div id="recordsList"></div>
+  </section>
+
+  <!-- ============ 鸟种图鉴 ============ -->
+  <section class="page" id="page-birds">
+    <div class="page-head">
+      <h1>🪶 鸟种图鉴</h1>
+      <span class="collect-progress" id="collectProgress"></span>
+    </div>
+    <div class="toolbar">
+      <input class="search-input" id="birdSearch" placeholder="🔍 搜鸟名 / 拉丁名…" oninput="renderBirds()">
+      <div class="chip-row" id="birdCatChips"></div>
+    </div>
+    <div class="bird-grid" id="birdGrid"></div>
+  </section>
+
+  <!-- ============ 观鸟地图 ============ -->
+  <section class="page" id="page-map">
+    <div class="page-head">
+      <h1>🗺️ 慈溪观鸟地图</h1>
+      <button class="btn btn-ghost" onclick="openSpotForm()">＋ 秘密据点</button>
+    </div>
+    <div class="card map-card">
+      <svg viewBox="0 0 100 72" class="cxmap" id="cxMap" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#a8cfe4"/><stop offset="100%" stop-color="#c9e3f0"/>
+          </linearGradient>
+          <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#eef3e2"/><stop offset="100%" stop-color="#e2ecd2"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="100" height="72" rx="10" fill="url(#seaGrad)"/>
+        <path d="M0,20 Q20,16 34,13 T62,9 T100,4 L100,72 L0,72 Z" fill="url(#landGrad)"/>
+        <path d="M0,20 Q20,16 34,13 T62,9 T100,4" fill="none" stroke="#f0d9a8" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M0,24 Q20,20 34,17 T62,13 T100,8" fill="none" stroke="#e8c98f" stroke-width="0.8" opacity=".6"/>
+        <path d="M44,66 C48,56 42,50 46,40 C48,34 44,28 46,18" fill="none" stroke="#9ec7de" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>
+        <path d="M64,64 C66,54 70,48 62,38 C58,32 62,26 60,14" fill="none" stroke="#9ec7de" stroke-width="1.3" stroke-linecap="round" opacity=".7"/>
+        <ellipse cx="40" cy="60" rx="9" ry="4.5" fill="#cfe0b4"/>
+        <ellipse cx="82" cy="54" rx="8" ry="4" fill="#cfe0b4"/>
+        <ellipse cx="30" cy="66" rx="6" ry="3" fill="#cfe0b4"/>
+        <text x="10" y="7" font-size="4" fill="#5d8aa8">🐬 杭 州 湾</text>
+        <text x="52" y="68" font-size="3.4" fill="#8aa27a">· 山林 ·</text>
+        <g id="mapMarkers"></g>
+        <g transform="translate(90,64)">
+          <circle r="4" fill="#fff" opacity=".85"/>
+          <path d="M0,-2.6 L0.9,-0.8 L2.8,-0.6 L1.4,0.8 L1.8,2.6 L0,1.7 L-1.8,2.6 L-1.4,0.8 L-2.8,-0.6 L-0.9,-0.8 Z" fill="#e88b94"/>
+          <text y="-5.4" text-anchor="middle" font-size="3" fill="#7b8a84">北</text>
+        </g>
+      </svg>
+      <p class="map-note">手绘示意图 · 点击图上的 📍 查看观鸟点详情</p>
+    </div>
+    <div id="spotList" class="spot-grid"></div>
+    <div class="card tips-card">
+      <h2>🎒 观鸟小贴士</h2>
+      <ul class="tips">
+        <li>🔭 <b>望远镜</b>是入门第一装备，8×42 双筒最合适；滩涂观水鸟可加单筒。</li>
+        <li>🌊 看滩涂水鸟要<b>查潮汐表</b>：涨潮前 1-2 小时鸟会被推到近处，最好看。</li>
+        <li>🧥 穿<b>暗色/大地色</b>衣服，动作放慢、压低身形，鸟会离你更近。</li>
+        <li>迁徙季（3-5月、9-11月）和冬季（11-2月）是杭州湾鸟种最丰富的时候。</li>
+        <li>💚 文明观鸟：<b>不惊扰、不诱拍、不捡拾鸟蛋</b>，与鸟保持距离，爱它就远远欣赏。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 回忆 ============ -->
+  <section class="page" id="page-memories">
+    <div class="mem-banner">
+      <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=couple%20holding%20hands%20birdwatching%20with%20binoculars%20at%20wetland%2C%20back%20view%2C%20sunset%20warm%20pink%20and%20orange%20sky%2C%20birds%20flying%20in%20v%20formation%2C%20romantic%20cozy%20illustration%20style%2C%20soft%20colors&image_size=landscape_16_9" alt="一起观鸟的黄昏">
+      <div class="mem-overlay">
+        <h1>💞 我们的回忆</h1>
+        <p id="memSub">每一次相遇，都值得被记住</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>🏆 里程碑</h2></div>
+      <div class="milestone-grid" id="milestones"></div>
+    </div>
+
+    <div class="home-grid two">
+      <div class="card">
+        <div class="card-head"><h2>📅 月度观鸟热度</h2></div>
+        <div class="chart" id="monthChart"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2>🪶 收藏分类</h2></div>
+        <div id="catChart"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>📸 照片墙</h2><span class="card-tag" id="photoCount"></span></div>
+      <div class="photo-wall" id="photoWall"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>🗄️ 数据备份</h2></div>
+      <p class="muted">数据保存在这台设备的浏览器里，换手机前记得导出一份，再在新设备导入即可。</p>
+      <div class="btn-row">
+        <button class="btn btn-ghost" onclick="exportData()">⬇️ 导出备份</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('importFile').click()">⬆️ 导入备份</button>
+        <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(this)">
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 底部导航（移动端） -->
+<nav class="tabbar">
+  <button class="tab active" data-page="home" onclick="go('home')"><span>🏠</span><i>首页</i></button>
+  <button class="tab" data-page="records" onclick="go('records')"><span>📖</span><i>记录</i></button>
+  <button class="tab tab-add" onclick="openRecordForm()"><span>＋</span></button>
+  <button class="tab" data-page="birds" onclick="go('birds')"><span>🪶</span><i>图鉴</i></button>
+  <button class="tab" data-page="memories" onclick="go('memories')"><span>�</span><i>回忆</i></button>
+</nav>
+
+<!-- 弹层：新增/编辑记录 -->
+<div class="modal-mask" id="recordModal">
+  <div class="modal sheet">
+    <div class="modal-head">
+      <h3 id="recordModalTitle">＋ 新的观鸟记录</h3>
+      <button class="icon-btn" onclick="closeModal('recordModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="recId">
+      <label class="f-label">日期</label>
+      <input type="date" id="recDate" class="f-input">
+
+      <label class="f-label">地点</label>
+      <select id="recSpot" class="f-input" onchange="onSpotSelectChange()"></select>
+      <input type="text" id="recSpotCustom" class="f-input" placeholder="输入自定义地点名…" style="display:none">
+
+      <label class="f-label">谁先发现的？</label>
+      <div class="chip-row" id="finderChips"></div>
+
+      <label class="f-label">天气</label>
+      <div class="chip-row" id="weatherChips"></div>
+
+      <label class="f-label">看到的鸟（点了下方按钮挑选）</label>
+      <button class="btn btn-ghost" onclick="openSpeciesPicker()">🪶 挑选鸟种</button>
+      <div class="picked-species" id="pickedSpecies"></div>
+
+      <label class="f-label">照片（可选）</label>
+      <input type="file" id="recPhotos" accept="image/*" multiple class="f-input" onchange="onPhotosPicked(this)">
+      <div class="photo-preview" id="photoPreview"></div>
+
+      <label class="f-label">心情 / 小记（可选）</label>
+      <textarea id="recNote" class="f-input" rows="3" placeholder="今天的风、光，和身边人的笑容…"></textarea>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-danger-ghost" id="recDeleteBtn" onclick="deleteCurrentRecord()" style="display:none">删除</button>
+      <div style="flex:1"></div>
+      <button class="btn btn-ghost" onclick="closeModal('recordModal')">取消</button>
+      <button class="btn btn-primary" onclick="saveRecord()">保存 💾</button>
+    </div>
+  </div>
+</div>
+
+<!-- 弹层：选鸟种 -->
+<div class="modal-mask" id="speciesModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>🪶 挑选今天看到的鸟</h3>
+      <button class="icon-btn" onclick="closeModal('speciesModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input class="search-input" id="speciesSearch" placeholder="🔍 搜索…" oninput="renderSpeciesPicker()">
+      <div class="chip-row" id="speciesCatChips"></div>
+      <div class="species-grid" id="speciesGrid"></div>
+      <div class="custom-species-row">
+        <input type="text" id="customSpeciesInput" class="f-input" placeholder="没有的鸟？输入名字添加…">
+        <button class="btn btn-ghost" onclick="addCustomSpeciesFromInput()">添加</button>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-primary" onclick="closeModal('speciesModal')">完成 ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- 弹层：鸟种详情 -->
+<div class="modal-mask" id="birdModal" onclick="if(event.target===this)closeModal('birdModal')">
+  <div class="modal modal-sm">
+    <div class="modal-body" id="birdDetail"></div>
+  </div>
+</div>
+
+<!-- 弹层：观鸟点详情 -->
+<div class="modal-mask" id="spotModal" onclick="if(event.target===this)closeModal('spotModal')">
+  <div class="modal modal-sm">
+    <div class="modal-body" id="spotDetail"></div>
+  </div>
+</div>
+
+<!-- 弹层：添加秘密据点 -->
+<div class="modal-mask" id="spotFormModal">
+  <div class="modal modal-sm">
+    <div class="modal-head">
+      <h3>📍 添加我们的秘密据点</h3>
+      <button class="icon-btn" onclick="closeModal('spotFormModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="customSpotId">
+      <label class="f-label">地点名称</label>
+      <input type="text" id="customSpotName" class="f-input" placeholder="例如：楼下的小河边">
+      <label class="f-label">备注</label>
+      <textarea id="customSpotNote" class="f-input" rows="2" placeholder="这里有什么好玩的鸟？"></textarea>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeModal('spotFormModal')">取消</button>
+      <button class="btn btn-primary" onclick="saveCustomSpot()">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- 弹层：设置 -->
+<div class="modal-mask" id="settingsModal">
+  <div class="modal modal-sm">
+    <div class="modal-head">
+      <h3>⚙️ 小站设置</h3>
+      <button class="icon-btn" onclick="closeModal('settingsModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <label class="f-label">你的名字</label>
+      <input type="text" id="setNameA" class="f-input">
+      <label class="f-label">TA 的名字</label>
+      <input type="text" id="setNameB" class="f-input">
+      <label class="f-label">在一起的日期（用于计算"在一起的第 N 天"）</label>
+      <input type="date" id="setAnniversary" class="f-input">
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeModal('settingsModal')">取消</button>
+      <button class="btn btn-primary" onclick="saveSettings()">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- 照片灯箱 -->
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('show')">
+  <img id="lightboxImg" src="" alt="照片">
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

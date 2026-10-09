@@ -1,0 +1,9 @@
+# 构建中间产物（xlsx 解包/导出的工作目录）
+_xlsx/
+
+# 临时脚本
+_tmp_*.js
+
+# 系统文件
+Thumbs.db
+.DS_Store
