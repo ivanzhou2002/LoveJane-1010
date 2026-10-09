@@ -167,6 +167,96 @@ const App = {
       : `<p class="birds-empty">${month} 月暂无匹配的珍稀鸟种记录——换个筛选或月份试试。</p>`;
   },
 
+  /* ---------- 鸟种三段式档案：何时何地 / 识别 / 细节 ---------- */
+  /* 月份列表压缩成区间文本：[1,2,3,11,12] → "1-3、11-12" */
+  monthRanges(months) {
+    const out = [];
+    let s = null, p = null;
+    months.forEach(m => {
+      if (s === null) { s = p = m; return; }
+      if (m === p + 1) { p = m; return; }
+      out.push(s === p ? `${s}` : `${s}-${p}`);
+      s = p = m;
+    });
+    if (s !== null) out.push(s === p ? `${s}` : `${s}-${p}`);
+    return out.join("、");
+  },
+
+  /* 从 eBird 点位清单统计某鸟种的本地记录：出现月份 / 点位 / 最大数量 / 最近日期 */
+  birdSchedule(name) {
+    const spots = [], months = new Set();
+    let max = 0, latest = "";
+    (typeof EBIRD_SPOTS !== "undefined" ? EBIRD_SPOTS : []).forEach(sp =>
+      (sp.birds || []).forEach(([n, , c, d]) => {
+        if (n !== name) return;
+        if (!spots.includes(sp.name)) spots.push(sp.name);
+        months.add(Number(d.slice(5, 7)));
+        if ((c || 0) > max) max = c;
+        if (d > latest) latest = d;
+      }));
+    return spots.length ? { spots, months: [...months].sort((a, b) => a - b), max, latest } : null;
+  },
+
+  /* 三段式档案 HTML：何时何地（eBird 自动统计）+ 识别 + 细节（note 里【辨】【记】标记） */
+  birdFieldHTML(bird) {
+    const seg = {};
+    (bird.note || "").split(/【(辨|记|找)】/).forEach((p, i, a) => { if (i % 2 === 1) seg[p] = (a[i + 1] || "").trim(); });
+    const look = seg.辨 || bird.note || "";
+    const sc = this.birdSchedule(bird.name);
+    const when = sc
+      ? `${this.monthRanges(sc.months)} 月见于${sc.spots.join("、")}`
+        + `${sc.max > 1 ? `，历史最大 ×${sc.max}` : ""}（最近记录 ${sc.latest}）`
+      : (seg.找 || `${bird.live}，暂无本地 eBird 记录`);
+    return `
+      <div class="bird-fields">
+        <div class="bird-field"><span class="bf-k mono">何时何地</span><p class="detail-note">${esc(when)}</p></div>
+        ${look ? `<div class="bird-field"><span class="bf-k mono">识别</span><p class="detail-note">${esc(look)}</p></div>` : ""}
+        ${seg.记 ? `<div class="bird-field"><span class="bf-k mono">细节</span><p class="detail-note">${esc(seg.记)}</p></div>` : ""}
+      </div>`;
+  },
+
+  /* 鸟种实拍照片：加新记录优先，其次情报实拍 */
+  photoMapOf(name) {
+    const rec = [...this.state.records].reverse().find(r => r.bird === name && r.photos?.length);
+    if (rec) return rec.photos[0];
+    const s = this.state.sightings.find(x => x.bird === name && x.photos?.length);
+    return s ? s.photos[0] : "";
+  },
+
+  /* 图鉴卡片 → 鸟种详情弹窗 */
+  openBirdDetail(name) {
+    const b = BIRDS.find(x => x.name === name);
+    if (!b) return;
+    const got = this.state.records
+      .filter(r => r.bird === name)
+      .sort((x, y) => (x.date < y.date ? -1 : 1))[0];
+    const tags = [
+      b.prot === 1 ? `<span class="tag tag-invert">国家一级</span>` : b.prot === 2 ? `<span class="tag tag-prot2">国家二级</span>` : "",
+      b.rare === 2 ? `<span class="tag tag-invert">珍稀</span>` : (b.rare === 1 ? `<span class="tag">少见</span>` : ""),
+    ].filter(Boolean).join("");
+    $("#bird-detail").innerHTML = `
+      <div class="detail-hero detail-wiki" data-bird="${esc(b.name)}"></div>
+      <h3 class="detail-bird">${esc(b.name)}</h3>
+      <p class="detail-latin">${esc(b.latin)}</p>
+      <div class="bird-tags">${tags}<span class="tag">${esc(b.live)}</span></div>
+      <div class="detail-grid" style="margin-top:18px">
+        <div class="detail-cell"><span class="detail-k">居留型</span><span class="detail-v">${esc(b.live)}</span></div>
+        <div class="detail-cell"><span class="detail-k">稀有度</span><span class="detail-v">${b.rare === 2 ? "珍稀" : b.rare === 1 ? "少见" : "常见"}</span></div>
+        <div class="detail-cell"><span class="detail-k">保护级别</span><span class="detail-v">${b.prot === 1 ? "国家一级" : b.prot === 2 ? "国家二级" : "—"}</span></div>
+        <div class="detail-cell"><span class="detail-k">初遇</span><span class="detail-v">${got ? `${fmtCN(got.date)} · ${esc(got.spotName || "")}` : "尚未相遇"}</span></div>
+      </div>
+      ${this.birdFieldHTML(b)}`;
+    this.openModal("modal-bird");
+
+    /* 头图：本地图优先，无则异步补维基网图 */
+    const hero = $("#bird-detail .detail-wiki");
+    const local = photoMapOf(b.name);   /* photos/ 实拍映射 */
+    if (local) hero.outerHTML = `<img class="detail-hero" src="${esc(local)}" alt="${esc(b.name)}">`;
+    else birdPhoto(b.name, b.latin).then(url => {
+      if (url && hero.isConnected) hero.innerHTML = `<img src="${esc(url)}" alt="${esc(b.name)}" loading="lazy" onerror="birdPhotoFail(this)">`;
+    });
+  },
+
   /* ---------- 情报详情 / 回填 ---------- */
   openIntelDetail(id) {
     const s = this.state.sightings.find(x => x.id === id);
@@ -742,6 +832,12 @@ ${pm}
         }));
     };
     chipGroup("#bird-filter", "bird", () => this.renderBirds());
+
+    /* 图鉴卡片 → 鸟种档案弹窗（事件委托，重渲染后依然有效） */
+    $("#birds-grid").addEventListener("click", e => {
+      const card = e.target.closest(".bird-card");
+      if (card?.dataset.name) this.openBirdDetail(card.dataset.name);
+    });
     chipGroup("#bird-class-filter", "birdClass", () => this.renderBirds());
     $("#bird-search").addEventListener("input", e => {
       this.birdQuery = e.target.value;

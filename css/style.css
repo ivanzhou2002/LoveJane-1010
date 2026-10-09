@@ -644,6 +644,15 @@ button { font: inherit; cursor: pointer; }
 .bird-card.is-collected .bird-meta { color: #a3a3a3; }
 .birds-empty { padding: 40px 0; color: var(--muted-fg); font-style: italic; }
 
+/* 三段式鸟种档案（何时何地 / 识别 / 细节） */
+.bird-fields { border-top: var(--rule-thin); margin-top: 20px; }
+.bird-field { padding: 16px 0; border-bottom: var(--rule-thin); }
+.bird-field:last-child { border-bottom: 0; padding-bottom: 4px; }
+.bird-field .detail-note { margin: 6px 0 0; }
+.bf-k { font-size: 0.5625rem; letter-spacing: 0.16em; color: var(--muted-fg); display: block; }
+.bird-card { cursor: pointer; }
+.bird-card:hover { box-shadow: inset 0 0 0 2px var(--foreground); }
+
 /* ---------- 记录 ---------- */
 .records-list { border-top: var(--rule-thin); }
 .record-item {

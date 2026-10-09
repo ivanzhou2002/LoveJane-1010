@@ -86,57 +86,68 @@ function uid() {
 }
 
 /** 无实拍图的鸟种 → 网图：拉丁学名查英文维基（鸟类学名条目几乎全有配图），
- *  失败回退中文维基条目名；结果缓存 localStorage（失败也缓存，避免重复请求） */
+ *  失败回退中文维基条目名。注意：只有「确认无图」才缓存空值——
+ *  网络失败不写缓存，避免一次抽风把鸟种永久判成无图 */
 async function birdPhoto(name, latin) {
-  const KEY = "birdImg2:" + (latin || name);
+  /* 优先用本地化的维基图（tools/download-wiki-photos.js 下载到 photos/wiki/） */
+  if (typeof WIKI_PHOTOS !== "undefined") {
+    const local = WIKI_PHOTOS[latin] || WIKI_PHOTOS[name];
+    if (local) return local;
+  }
+  const KEY = "birdImg3:" + (latin || name);
   const cached = localStorage.getItem(KEY);
   if (cached !== null) return cached || null;
-  /* 兼容旧缓存里已成功的结果 */
-  const old = localStorage.getItem("birdImg:" + name);
-  if (old) { localStorage.setItem(KEY, old); return old; }
-  let url = "";
+  /* 沿用旧缓存里已成功的结果（旧空值可能是网络失败误存的，不迁移） */
+  const prev = localStorage.getItem("birdImg2:" + (latin || name))
+            || localStorage.getItem("birdImg:" + name);
+  if (prev) { localStorage.setItem(KEY, prev); return prev; }
+
+  let url = "", apiAlive = false;
+  const grab = async (host, title) => {
+    const r = await fetch(`https://${host}/api/rest_v1/page/summary/${encodeURIComponent(title)}?redirect=true`);
+    if (!r.ok) return "";
+    const j = await r.json();
+    apiAlive = true;   /* API 有响应 = 网络通，此时查不到才算真没图 */
+    return j.thumbnail?.source || j.originalimage?.source || "";
+  };
   try {
-    if (latin) {
-      const r = await fetch(
-        `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(latin)}?redirect=true`);
-      if (r.ok) {
-        const j = await r.json();
-        url = j.thumbnail?.source || j.originalimage?.source || "";
-      }
-    }
-    if (!url) {
-      const r2 = await fetch(
-        `https://zh.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(name)}?redirect=true`);
-      if (r2.ok) {
-        const j2 = await r2.json();
-        url = j2.thumbnail?.source || "";
-      }
-    }
-  } catch { /* 网络异常也缓存空值 */ }
-  localStorage.setItem(KEY, url);
-  return url || null;
+    if (latin) url = await grab("en.wikipedia.org", latin);
+    if (!url) url = await grab("zh.wikipedia.org", name);
+  } catch { /* 网络异常：直接放弃本次，不缓存，下次再试 */ }
+  if (url) { localStorage.setItem(KEY, url); return url; }
+  if (apiAlive) localStorage.setItem(KEY, "");   /* 确认无图才记空值 */
+  return null;
 }
 
-/** thumb.wikimedia.org 在国内连接不稳，同一张图时好时坏：
- *  加载失败 → 加时间戳换条连接重试 → 改用未缩放原图 → 还原首字占位。
+/** thumb.wikimedia.org 在国内连接不稳，同一张图时好时坏。
+ *  五级回退（带退避延时）：重试 ×2 → 直连原图 → wsrv.nl 图片代理 → 首字占位。
  *  生成的 <img> 需带 onerror="birdPhotoFail(this)"，可选 data-revert（放弃时还原的占位 class） */
 function birdPhotoFail(img) {
   const n = Number(img.dataset.retry || 0);
-  const src = img.getAttribute("src") || "";
-  if (n === 0) {                    /* 第 1 次失败：换条连接重试 */
-    img.dataset.retry = "1";
-    img.src = src.split("?")[0] + "?r=" + Date.now();
-  } else if (n === 1 && src.includes("/thumb/")) {   /* 仍失败：绕开缩略图服务直连原图 */
-    img.dataset.retry = "2";
-    img.src = src.split("?")[0]
-      .replace("thumb.wikimedia.org", "upload.wikimedia.org")
-      .replace("/thumb/", "/")
-      .replace(/\/(?:lossy-page\d+-)?\d+px-[^/]+$/, "");
-  } else if (img.dataset.revert) {  /* 放弃：还原为首字占位（不带 data-*，避免重新触发拉图） */
-    img.outerHTML = `<span class="${esc(img.dataset.revert)}">${esc((img.alt || "?").slice(0, 1))}</span>`;
-  } else {
-    img.remove();
-  }
+  const src = (img.getAttribute("src") || "").split("?")[0];
+  const toOriginal = u => u.includes("/thumb/")
+    ? u.replace("thumb.wikimedia.org", "upload.wikimedia.org")
+       .replace("/thumb/", "/")
+       .replace(/\/(?:lossy-page\d+-)?\d+px-[^/]+$/, "")
+    : u;
+  /* 逐次拉大间隔，给网络喘息时间；页面重渲染后元素失效则直接放弃 */
+  setTimeout(() => {
+    if (!img.isConnected) return;
+    if (n <= 1) {                          /* 前 2 次：换条连接重试缩略图 */
+      img.dataset.retry = String(n + 1);
+      img.src = src + "?r=" + Date.now();
+    } else if (n === 2) {                  /* 绕开缩略图服务直连原图 */
+      img.dataset.retry = "3";
+      img.src = toOriginal(src);
+    } else if (n === 3) {                  /* 走 wsrv.nl 图片代理中转（含转压 480px） */
+      img.dataset.retry = "4";
+      img.src = "https://wsrv.nl/?url=" + encodeURIComponent(toOriginal(src)) + "&w=480";
+    } else if (img.dataset.revert) {       /* 放弃：还原为首字占位（不带 data-*，避免重新触发拉图） */
+      img.outerHTML = `<span class="${esc(img.dataset.revert)}">${esc((img.alt || "?").slice(0, 1))}</span>`;
+    } else {
+      img.remove();
+    }
+  }, [0, 500, 1200, 2000][Math.min(n, 3)]);
 }
 
 /** 手机拍照压缩为 dataURL（最长边 1280px / JPEG 0.82），只存本机不上传服务器 */
