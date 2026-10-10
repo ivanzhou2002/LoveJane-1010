@@ -905,7 +905,8 @@ button { font: inherit; cursor: pointer; }
   display: flex; align-items: center; justify-content: center;
   margin: 0 0 26px;
 }
-.gate-q { font-size: 0.8125rem; letter-spacing: 0.12em; margin-bottom: 14px; }
+.gate-field { display: block; margin-bottom: 14px; }
+.gate-q { display: block; font-size: 0.8125rem; letter-spacing: 0.12em; margin-bottom: 6px; }
 .gate-input { text-align: center; letter-spacing: 0.5em; font-size: 1.25rem; }
 .gate-btn { width: 100%; margin-top: 12px; }
 .gate-err { color: var(--foreground); font-size: 0.6875rem; letter-spacing: 0.2em; margin-top: 10px; }
