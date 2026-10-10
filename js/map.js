@@ -40,6 +40,11 @@ const MapView = {
     });
   },
 
+  /** 回到慈溪：复位到初始视野 */
+  resetView() {
+    this.map.flyToBounds([[30.10, 121.08], [30.47, 121.62]]);
+  },
+
   toggleSatellite() {
     const usingSat = this.map.hasLayer(this.tileSatellite);
     if (usingSat) {
