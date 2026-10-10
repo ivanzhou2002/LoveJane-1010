@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>观鸟志 — 慈溪 · 两个人的观鸟地图</title>
-  <meta name="description" content="慈溪情侣观鸟记录：鸟讯情报、共享地图、图鉴收集。">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='23' font-size='19' font-family='serif' fill='%23fff' text-anchor='middle'%3E鸟%3C/text%3E%3C/svg%3E">
+  <title>观鸟�?�?慈溪 · 两个人的观鸟地图</title>
+  <meta name="description" content="慈溪情侣观鸟记录：鸟讯情报、共享地图、图鉴收集�?>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='23' font-size='19' font-family='serif' fill='%23fff' text-anchor='middle'%3E�?3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Serif+4:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
@@ -20,10 +20,10 @@
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="#map" data-go="map">
-        <span class="brand-cn">观鸟志</span>
+        <span class="brand-cn">观鸟�?/span>
         <span class="brand-en">BIRDING&nbsp;JOURNAL&nbsp;/&nbsp;CIXI</span>
       </a>
-      <nav class="nav-desktop" aria-label="主导航">
+      <nav class="nav-desktop" aria-label="主导�?>
         <a href="#map"     data-go="map"     class="nav-link is-active">地图</a>
         <a href="#intel"   data-go="intel"   class="nav-link">情报</a>
         <a href="#birds"   data-go="birds"   class="nav-link">图鉴</a>
@@ -35,19 +35,19 @@
 
   <main id="main">
 
-    <!-- ============ 地图页（首页） ============ -->
+    <!-- ============ 地图页（首页�?============ -->
     <section id="page-map" class="page is-active">
       <div class="hero">
         <p class="hero-kicker">EST. <span id="hero-year">2026</span> · 慈溪 · 30.17°N 121.24°E</p>
-        <h1 class="hero-title">候鸟经过<br><em>的地方</em></h1>
+        <h1 class="hero-title">候鸟经过<br><em>的地�?/em></h1>
         <div class="hero-rule"><span class="hero-square" aria-hidden="true"></span></div>
-        <p class="hero-sub">候鸟经过的地方，Jane和Ivan也一起经过</p>
+        <p class="hero-sub">候鸟经过的地方，Jane和Ivan也一起经�?/p>
       </div>
 
-      <!-- 反色统计条 -->
+      <!-- 反色统计�?-->
       <div class="stats" id="stats">
         <div class="stat"><span class="stat-num" id="stat-records">0</span><span class="stat-label">加新次数</span></div>
-        <div class="stat"><span class="stat-num" id="stat-intel">0</span><span class="stat-label">待加新</span></div>
+        <div class="stat"><span class="stat-num" id="stat-intel">0</span><span class="stat-label">待加�?/span></div>
       </div>
 
       <!-- 地图 -->
@@ -55,22 +55,22 @@
         <div class="map-head">
           <h2 class="section-title">共享观鸟地图</h2>
           <div class="map-tools">
-            <button type="button" class="btn btn-ghost" id="btn-locate">◎ 定位</button>
-            <button type="button" class="btn btn-ghost" id="btn-satellite">卫星图</button>
+            <button type="button" class="btn btn-ghost" id="btn-locate">�?定位</button>
+            <button type="button" class="btn btn-ghost" id="btn-satellite">卫星�?/button>
             <div class="export-wrap">
-              <button type="button" class="btn btn-ghost" id="btn-export-spots">导出到手机地图</button>
+              <button type="button" class="btn btn-ghost" id="btn-export-spots">导出到手机地�?/button>
               <div class="export-menu mono" id="export-menu" hidden>
                 <button type="button" id="exp-kml">谷歌地图 · KML 文件</button>
-                <button type="button" id="exp-amap">高德地图 · 点位链接页</button>
+                <button type="button" id="exp-amap">高德地图 · 点位链接�?/button>
               </div>
             </div>
-            <button type="button" class="btn btn-primary" id="btn-reset-view">⟲ 回到慈溪</button>
+            <button type="button" class="btn btn-primary" id="btn-reset-view">�?回到慈溪</button>
           </div>
         </div>
         <div class="map-frame">
           <div id="map"></div>
           <div class="map-legend mono">
-            <span><i class="lg-dot"></i>小红书点位</span>
+            <span><i class="lg-dot"></i>小红书点�?/span>
             <span><i class="lg-dot is-ebird"></i>eBird 点位</span>
           </div>
           <div class="map-banner mono" id="map-banner" hidden>点击地图选择位置 · <button type="button" class="linklike" id="btn-cancel-pick">取消</button></div>
@@ -83,72 +83,72 @@
       <div class="latest">
         <div class="section-head">
           <h2 class="section-title">本月热点</h2>
-          <a href="#intel" data-go="intel" class="linklike mono">全部 →</a>
+          <a href="#intel" data-go="intel" class="linklike mono">全部 �?/a>
         </div>
         <div id="latest-list" class="latest-list"></div>
       </div>
     </section>
 
-    <!-- ============ 情报页 ============ -->
+    <!-- ============ 情报�?============ -->
     <section id="page-intel" class="page">
       <div class="page-head">
         <h2 class="page-title">情报</h2>
-        <p class="page-kicker mono">INTEL · 本月最容易看到珍稀鸟种的地点</p>
+        <p class="page-kicker mono">INTEL · 本月最容易看到珍稀鸟种的地�?/p>
       </div>
       <div class="hot-month-nav mono">
         <button type="button" class="btn btn-outline" id="hot-prev">◀ 上月</button>
-        <span class="hot-month-label" id="hot-month">10 月</span>
-        <button type="button" class="btn btn-outline" id="hot-next">下月 ▶</button>
+        <span class="hot-month-label" id="hot-month">10 �?/span>
+        <button type="button" class="btn btn-outline" id="hot-next">下月 �?/button>
       </div>
       <div class="filter-bar mono" id="intel-filter">
         <button type="button" class="chip is-active" data-f="all">全部</button>
-        <button type="button" class="chip" data-f="prot1">国家一级</button>
+        <button type="button" class="chip" data-f="prot1">国家一�?/button>
         <button type="button" class="chip" data-f="prot2">国家二级</button>
         <button type="button" class="chip" data-f="rare">珍稀</button>
       </div>
       <div id="intel-list" class="intel-list"></div>
     </section>
 
-    <!-- ============ 图鉴页 ============ -->
+    <!-- ============ 图鉴�?============ -->
     <section id="page-birds" class="page">
       <div class="page-head">
         <h2 class="page-title">图鉴</h2>
         <p class="page-kicker mono">FIELD GUIDE · <span id="birds-count">0 / 0</span></p>
       </div>
       <div class="search-row">
-        <input type="search" id="bird-search" class="input" placeholder="搜索鸟名或学名…" aria-label="搜索鸟种">
+        <input type="search" id="bird-search" class="input" placeholder="搜索鸟名或学名�? aria-label="搜索鸟种">
       </div>
-      <!-- 两套独立筛选：加新状态 × 鸟种等级，可组合 -->
+      <!-- 两套独立筛选：加新状�?× 鸟种等级，可组合 -->
       <div class="filter-set">
-        <span class="filter-label mono">加新状态</span>
+        <span class="filter-label mono">加新状�?/span>
         <div class="filter-bar mono" id="bird-filter">
           <button type="button" class="chip is-active" data-f="all">全部</button>
-          <button type="button" class="chip" data-f="collected">已收集</button>
-          <button type="button" class="chip" data-f="target">待寻找</button>
+          <button type="button" class="chip" data-f="collected">已收�?/button>
+          <button type="button" class="chip" data-f="target">待寻�?/button>
         </div>
         <span class="filter-label mono">鸟种等级</span>
         <div class="filter-bar mono" id="bird-class-filter">
           <button type="button" class="chip is-active" data-f="all">全部</button>
-          <button type="button" class="chip" data-f="common">普通</button>
+          <button type="button" class="chip" data-f="common">普�?/button>
           <button type="button" class="chip" data-f="uncommon">少见</button>
           <button type="button" class="chip" data-f="rare">珍稀</button>
-          <button type="button" class="chip" data-f="prot1">国家一级</button>
+          <button type="button" class="chip" data-f="prot1">国家一�?/button>
           <button type="button" class="chip" data-f="prot2">国家二级</button>
         </div>
       </div>
       <div id="birds-grid" class="birds-grid"></div>
     </section>
 
-    <!-- ============ 记录页 ============ -->
+    <!-- ============ 记录�?============ -->
     <section id="page-records" class="page">
       <div class="page-head">
         <h2 class="page-title">记录</h2>
-        <p class="page-kicker mono">FIELD NOTES · 每一次相遇</p>
+        <p class="page-kicker mono">FIELD NOTES · 每一次相�?/p>
       </div>
       <div id="records-list" class="records-list"></div>
     </section>
 
-    <!-- ============ 设置页 ============ -->
+    <!-- ============ 设置�?============ -->
     <section id="page-settings" class="page">
       <div class="page-head">
         <h2 class="page-title">设置</h2>
@@ -161,7 +161,7 @@
             <input class="input" id="set-a" type="text" maxlength="12">
           </label>
           <label class="field">
-            <span class="field-label mono">TA 的名字</span>
+            <span class="field-label mono">TA 的名�?/span>
             <input class="input" id="set-b" type="text" maxlength="12">
           </label>
         </div>
@@ -171,7 +171,7 @@
         </label>
         <div class="field">
           <span class="field-label mono">数据存储</span>
-          <p class="mono storage-note">本地模式（localStorage） · 云端同步将于部署前启用</p>
+          <p class="mono storage-note">本地模式（localStorage�?· 云端同步将于部署前启�?/p>
         </div>
         <div class="settings-actions">
           <button type="submit" class="btn btn-primary">保存</button>
@@ -184,7 +184,7 @@
   </main>
 
   <!-- ============ 底部移动导航 ============ -->
-  <nav class="tabbar" aria-label="移动端导航">
+  <nav class="tabbar" aria-label="移动端导�?>
     <a href="#map"     data-go="map"     class="tab is-active">地图</a>
     <a href="#intel"   data-go="intel"   class="tab">情报</a>
     <a href="#birds"   data-go="birds"   class="tab">图鉴</a>
@@ -196,7 +196,7 @@
   <div class="modal" id="modal-intel" hidden>
     <div class="modal-mask" data-close></div>
     <div class="modal-body" role="dialog" aria-modal="true" aria-label="情报详情">
-      <button type="button" class="modal-x mono" data-close>✕</button>
+      <button type="button" class="modal-x mono" data-close>�?/button>
       <div id="intel-detail"></div>
     </div>
   </div>
@@ -205,7 +205,7 @@
   <div class="modal" id="modal-form" hidden>
     <div class="modal-mask" data-close></div>
     <div class="modal-body" role="dialog" aria-modal="true" aria-label="发布情报">
-      <button type="button" class="modal-x mono" data-close>✕</button>
+      <button type="button" class="modal-x mono" data-close>�?/button>
       <form id="intel-form">
         <h3 class="form-title" id="intel-form-title">发布情报</h3>
         <label class="field">
@@ -221,7 +221,7 @@
           <span class="field-label mono">精确位置（可选）</span>
           <div class="pick-row">
             <span class="mono pick-coord" id="if-coord">未选择</span>
-            <button type="button" class="btn btn-outline btn-sm" id="if-pick">在地图上点选</button>
+            <button type="button" class="btn btn-outline btn-sm" id="if-pick">在地图上点�?/button>
           </div>
         </div>
         <label class="field">
@@ -229,7 +229,7 @@
           <input class="input" id="if-date" type="date" required>
         </label>
         <div class="field">
-          <span class="field-label mono">可信度</span>
+          <span class="field-label mono">可信�?/span>
           <div class="chip-group mono" id="if-confidence">
             <button type="button" class="chip is-active" data-v="high">确定</button>
             <button type="button" class="chip" data-v="low">传闻</button>
@@ -237,24 +237,24 @@
         </div>
         <label class="field">
           <span class="field-label mono">来源链接（小红书等）</span>
-          <input class="input" id="if-source" type="url" placeholder="https://…">
+          <input class="input" id="if-source" type="url" placeholder="https://�?>
         </label>
         <label class="field">
           <span class="field-label mono">备注</span>
-          <textarea class="input textarea" id="if-note" rows="2" placeholder="出没位置、数量、观鸟提示…"></textarea>
+          <textarea class="input textarea" id="if-note" rows="2" placeholder="出没位置、数量、观鸟提示�?></textarea>
         </label>
         <div class="form-actions">
-          <button type="submit" class="btn btn-primary">发布 →</button>
+          <button type="submit" class="btn btn-primary">发布 �?/button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- ============ 「加新」回填表单 ============ -->
+  <!-- ============ 「加新」回填表�?============ -->
   <div class="modal" id="modal-confirm" hidden>
     <div class="modal-mask" data-close></div>
     <div class="modal-body" role="dialog" aria-modal="true" aria-label="回填观测">
-      <button type="button" class="modal-x mono" data-close>✕</button>
+      <button type="button" class="modal-x mono" data-close>�?/button>
       <form id="confirm-form">
         <h3 class="form-title">加新<span class="mono confirm-bird" id="cf-bird"></span></h3>
         <div class="field-row">
@@ -269,20 +269,20 @@
           </label>
         </div>
         <div class="field">
-          <span class="field-label mono">谁先发现的</span>
+          <span class="field-label mono">谁先发现�?/span>
           <div class="chip-group mono" id="cf-finder">
             <button type="button" class="chip is-active" data-v="a">Ivan</button>
             <button type="button" class="chip" data-v="b">Jane</button>
-            <button type="button" class="chip" data-v="both">一起</button>
+            <button type="button" class="chip" data-v="both">一�?/button>
           </div>
         </div>
         <label class="field">
-          <span class="field-label mono">上传图片（仅保存在本机，不上传服务器）</span>
+          <span class="field-label mono">上传图片（仅保存在本机，不上传服务器�?/span>
           <input class="input" id="cf-photos" type="file" accept="image/*" multiple>
         </label>
         <div class="cf-previews" id="cf-previews"></div>
         <div class="form-actions">
-          <button type="submit" class="btn btn-primary">收入图鉴 →</button>
+          <button type="submit" class="btn btn-primary">收入图鉴 �?/button>
         </div>
       </form>
     </div>
@@ -297,6 +297,6 @@
   <script src="js/util.js?v=9"></script>
   <script src="js/db.js?v=4"></script>
   <script src="js/map.js?v=20"></script>
-  <script src="js/app.js?v=23"></script>
+  <script src="js/app.js?v=24"></script>
 </body>
 </html>

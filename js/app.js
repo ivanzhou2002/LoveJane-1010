@@ -511,7 +511,7 @@ const App = {
         targetSet.has(b.name) && !got ? `<span class="tag">待寻找</span>` : "",
       ].filter(Boolean).join("");
       return `
-        <div class="bird-card${cls}">
+        <div class="bird-card${cls}" data-name="${esc(b.name)}">
           <div class="bird-info">
             <div>
               <h3 class="bird-name">${esc(b.name)}</h3>
