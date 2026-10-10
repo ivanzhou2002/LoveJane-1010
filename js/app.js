@@ -296,8 +296,17 @@ const App = {
         <div class="detail-cell"><span class="detail-k">保护级别</span><span class="detail-v">${b.prot === 1 ? "国家一级" : b.prot === 2 ? "国家二级" : "—"}</span></div>
         <div class="detail-cell"><span class="detail-k">初遇</span><span class="detail-v">${got ? `${fmtCN(got.date)} · ${esc(got.spotName || "")}` : "尚未相遇"}</span></div>
       </div>
-      ${this.birdFieldHTML(b)}`;
+      ${this.birdFieldHTML(b)}
+      ${!got ? `
+      <div class="detail-actions">
+        <button type="button" class="btn btn-primary" id="bird-btn-confirm">加新 ✓</button>
+      </div>` : ""}`;
     this.openModal("modal-bird");
+
+    /* 未加新：直接从档案发起加新（地点手填/选预设，不依赖小红书情报） */
+    $("#bird-btn-confirm")?.addEventListener("click", () => {
+      this.openConfirmForm({ id: null, bird: b.name, spotName: "", lat: null, lng: null });
+    });
 
     /* 头图：本地图优先，无则异步补维基网图 */
     const hero = $("#bird-detail .detail-wiki");
@@ -334,7 +343,7 @@ const App = {
       <div class="detail-photos">
         ${s.photos.slice(1).map(p => `<a href="${esc(p)}" target="_blank" rel="noopener"><img src="${esc(p)}" alt="${esc(s.bird)}" loading="lazy"></a>`).join("")}
       </div>` : ""}
-      ${bird ? `<p class="detail-note">${esc(bird.note)}</p>` : ""}
+      ${bird ? this.birdFieldHTML(bird) : ""}
       <div class="detail-actions">
         ${st === "active" ? `<button type="button" class="btn btn-primary" id="btn-confirm">加新 ✓</button>` : ""}
         <button type="button" class="btn btn-outline" id="btn-focus">在地图上查看</button>
@@ -369,6 +378,7 @@ const App = {
     this.setChipGroup("#cf-finder", "a");
     this._confirming = s;
     this.closeModal("modal-intel");
+    this.closeModal("modal-bird");
     this.openModal("modal-confirm");
     $("#cf-date").focus();
   },
@@ -409,15 +419,15 @@ const App = {
       id: uid(),
       bird: s.bird,
       spotName: $("#cf-spot").value.trim() || s.spotName,
-      lat: s.lat, lng: s.lng,
+      lat: s.lat ?? null, lng: s.lng ?? null,
       date: $("#cf-date").value || todayStr(),
       finder: this.chipValue("#cf-finder"),
       photos: this._pendingPhotos || [],
-      sightingId: s.id,
+      sightingId: s.id || null,
       createdAt: Date.now(),
     };
     db.addRecord(rec);
-    db.updateSighting(s.id, { status: "confirmed" });
+    if (s.id) db.updateSighting(s.id, { status: "confirmed" });
     this.state.records = db.getRecords();
     this.state.sightings = db.getSightings();
     this.closeModal("modal-confirm");
