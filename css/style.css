@@ -893,7 +893,7 @@ button { font: inherit; cursor: pointer; }
   left: 0; right: 0; bottom: 0;
   z-index: 1000;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   background: var(--background);
   border-top: var(--rule-thin);
   height: var(--w-tabbar);
