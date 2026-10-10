@@ -115,14 +115,12 @@ const App = {
   },
 
   renderStats() {
-    const { records, sightings } = this.state;
-    /* 待加新：有情报、尚未加新，按鸟种去重（同一鸟多条情报只算一次） */
-    const got = new Set(records.map(r => r.bird));
-    const active = new Set(
-      sightings.filter(s => MapView.statusOf(s) === "active" && !got.has(s.bird)).map(s => s.bird)
-    ).size;
-    $("#stat-records").textContent = records.length;   // 加新次数
-    $("#stat-intel").textContent = active;             // 待加新
+    const { records } = this.state;
+    /* 待加新 = 图鉴收录的全部鸟种 - 已加新种数（与图鉴页 X/262 口径一致） */
+    const names = new Set(BIRDS.map(b => b.name));
+    const got = new Set(records.map(r => r.bird).filter(n => names.has(n)));
+    $("#stat-records").textContent = records.length;          // 加新次数
+    $("#stat-intel").textContent = BIRDS.length - got.size;   // 待加新
   },
 
   /* ---------- 情报渲染 ---------- */
