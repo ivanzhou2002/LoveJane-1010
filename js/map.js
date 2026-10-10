@@ -33,10 +33,13 @@ const MapView = {
     this.tileSatellite = L.tileLayer(this.SATELLITE_URL, {
       subdomains: "1234", maxZoom: 18, attribution: "© 高德地图",
     });
-    // 点位弹窗内的鸟种行 → 打开情报详情
+    // 点位弹窗内的鸟种行 → 打开详情（小红书行→情报详情；eBird 行→鸟种档案）
     this.map.on("popupopen", () => {
       document.querySelectorAll(".pop-bird").forEach(el =>
-        el.addEventListener("click", () => App.openIntelDetail(el.dataset.id)));
+        el.addEventListener("click", () => {
+          if (el.dataset.id) App.openIntelDetail(el.dataset.id);
+          else if (el.dataset.bname) App.openBirdDetail(el.dataset.bname);
+        }));
     });
   },
 
@@ -130,12 +133,12 @@ const MapView = {
     const body = sp.birds ? (() => {
       const rows = sp.birds.map(([name, latin, n, d]) => {
         const ok = typeof App !== "undefined" && App.state.records.some(r => r.bird === name);
-        return `<div class="pop-bird${ok ? " is-confirmed" : ""}">`
+        return `<button type="button" class="pop-bird${ok ? " is-confirmed" : ""}" data-bname="${esc(name)}">`
           + `<span class="pop-noimg" data-bird="${esc(name)}" data-latin="${esc(latin)}">${esc(name.slice(0, 1))}</span>`
           + `<span class="pop-name">${esc(name)}</span>`
           + `<span class="pop-count">${n ? "×" + n : "—"}</span>`
           + `<span class="pop-date">${esc(d.slice(2).replace(/-/g, "."))}</span>`
-          + `</div>`;
+          + `</button>`;
       }).join("");
       return `
         <div class="pop-list">${rows}</div>
