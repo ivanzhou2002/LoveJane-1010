@@ -53,6 +53,30 @@ function apiImg(title, host) {
   } catch { return ""; }
 }
 
+/* Commons 按学名直接搜文件（不依赖语言条目存在） */
+function commonsImg(title) {
+  const u = "https://commons.wikimedia.org/w/api.php?action=query&generator=search"
+    + `&gsrsearch=${encodeURIComponent("filetype:bitmap " + title)}&gsrnamespace=6&gsrlimit=1`
+    + "&prop=imageinfo&iiprop=url&iiurlwidth=800&format=json";
+  try {
+    const j = JSON.parse(curl([...P, u]).toString("utf8"));
+    const first = Object.values((j.query && j.query.pages) || {})[0];
+    return (first && first.imageinfo && (first.imageinfo[0].thumburl || first.imageinfo[0].url)) || "";
+  } catch { return ""; }
+}
+
+/* iNaturalist 按学名取默认图（实拍，免费无 key） */
+function inatImg(latin) {
+  if (!latin) return "";
+  const u = `https://api.inaturalist.org/v1/taxa?q=${encodeURIComponent(latin)}&per_page=5`;
+  try {
+    const j = JSON.parse(curl([...P, u]).toString("utf8"));
+    const low = latin.toLowerCase();
+    const t = (j.results || []).find(x => (x.name || "").toLowerCase() === low) || (j.results || [])[0];
+    return (t && t.default_photo && (t.default_photo.medium_url || t.default_photo.url)) || "";
+  } catch { return ""; }
+}
+
 (async () => {
   const queue = BIRDS.slice();
   const manifest = {};
@@ -71,6 +95,8 @@ function apiImg(title, host) {
       }
       let url = b.latin ? apiImg(b.latin, "en.wikipedia.org") : "";
       if (!url) url = apiImg(b.name, "zh.wikipedia.org");
+      if (!url && b.latin) url = commonsImg(b.latin);
+      if (!url) url = inatImg(b.latin || b.name);
       if (url) {
         try {
           curl([...P, "-o", abs, url]);
