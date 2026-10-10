@@ -497,6 +497,11 @@ button { font: inherit; cursor: pointer; }
 .latest { padding-bottom: clamp(56px, 9vw, 112px); }
 .latest-list, .intel-list { display: grid; gap: 0; border-top: var(--rule-thin); }
 
+/* 我的情报条目：日期 | 鸟种+地点 | 状态 */
+#my-intel-list { display: grid; gap: 0; border-top: var(--rule-thin); }
+.my-intel { grid-template-columns: 84px 1fr auto; align-items: center; }
+.my-intel-date { font-size: 0.6875rem; letter-spacing: 0.1em; opacity: 0.65; }
+
 .intel-item {
   display: grid;
   grid-template-columns: 22px 1fr auto;

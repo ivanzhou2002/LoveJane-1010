@@ -100,6 +100,7 @@ const App = {
     this.renderStats();
     this.renderLatest();
     this.renderIntelList();
+    this.renderMyIntel();
     this.renderBirds();
     this.renderRecords();
     this.updateFinderChips();
@@ -180,6 +181,28 @@ const App = {
   switchHotMonth(delta) {
     this.hotMonth = ((this.hotMonth - 1 + delta + 12) % 12) + 1;
     this.renderIntelList();
+  },
+
+  /* 我的小红书情报列表：点击 → 情报详情（内有加新/删除） */
+  renderMyIntel() {
+    const rows = [...this.state.sightings]
+      .sort((a, b) => b.date.localeCompare(a.date))
+      .map(s => {
+        const st = MapView.statusOf(s);
+        const b = BIRDS.find(x => x.name === s.bird);
+        const prot = b?.prot === 1 ? `<i class="tag tag-invert">一级</i>` : b?.prot === 2 ? `<i class="tag tag-prot2">二级</i>` : "";
+        return `
+          <article class="intel-item my-intel" data-id="${esc(s.id)}">
+            <span class="my-intel-date mono">${esc(s.date.slice(2).replace(/-/g, "."))}</span>
+            <div>
+              <div class="intel-bird">${esc(s.bird)} ${prot}</div>
+              <div class="intel-spot">${esc(s.spotName)}</div>
+            </div>
+            ${this.statusTag(st)}
+          </article>`;
+      }).join("");
+    $("#my-intel-list").innerHTML = rows
+      || `<p class="birds-empty">还没有情报——地图上点「发布情报」。</p>`;
   },
 
   renderIntelList() {
@@ -848,6 +871,12 @@ ${pm}
       }));
     $("#hot-prev").addEventListener("click", () => this.switchHotMonth(-1));
     $("#hot-next").addEventListener("click", () => this.switchHotMonth(1));
+
+    // 我的情报条目 → 情报详情（加新 / 删除入口）
+    $("#my-intel-list").addEventListener("click", e => {
+      const item = e.target.closest(".my-intel");
+      if (item?.dataset.id) this.openIntelDetail(item.dataset.id);
+    });
 
     // 图鉴筛选（加新状态 / 鸟种等级两组，各自单选、互相组合）+ 搜索
     const chipGroup = (id, key, rerender) => {
