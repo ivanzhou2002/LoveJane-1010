@@ -18,6 +18,7 @@ const App = {
     this.state.records = db.getRecords();
     this.state.settings = db.getSettings();
 
+    this.checkGate();
     this.fillBirdList();
     this.fillSpotSelect();
     this.bindEvents();
@@ -26,6 +27,34 @@ const App = {
     MapView.render(this.state.sightings);
     this.go("map");
     this.updateAll();
+  },
+
+  /* ---------- 访问密码门：答对一次记住本设备 ---------- */
+  checkGate() {
+    if (localStorage.getItem("bjGate") === "ok") return;
+    const QA = [["Jane 的生日是？", "0502"], ["Ivan 的生日是？", "0315"]];
+    const q = QA[Math.floor(Math.random() * QA.length)];
+    const gate = $("#gate");
+    gate.hidden = false;
+    $("#gate-q").textContent = q[0];
+    document.body.classList.add("is-locked");
+    $("#gate-form").addEventListener("submit", e => {
+      e.preventDefault();
+      const input = $("#gate-input");
+      if (input.value.trim() === q[1]) {
+        localStorage.setItem("bjGate", "ok");
+        gate.hidden = true;
+        document.body.classList.remove("is-locked");
+      } else {
+        input.classList.remove("shake");
+        void input.offsetWidth;                       /* 重置动画 */
+        input.classList.add("shake");
+        $("#gate-err").hidden = false;
+        input.value = "";
+        input.focus();
+      }
+    });
+    $("#gate-input").focus();
   },
 
   /* 一次性迁移：v2 清除旧版错标数据；v3 旧昵称升级 + 默认纪念日 */

@@ -887,6 +887,48 @@ button { font: inherit; cursor: pointer; }
   text-align: center;
 }
 
+/* ---------- 访问密码门 ---------- */
+.gate {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;                       /* 压过 tabbar(1000) 与弹窗 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+  padding: 24px;
+}
+.gate-box { text-align: center; max-width: 20rem; width: 100%; }
+.gate-kicker { font-size: 0.625rem; letter-spacing: 0.35em; }
+.gate-title { font-family: var(--serif); font-weight: 900; font-size: 2.25rem; margin: 10px 0; }
+.gate-rule {
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 0 26px;
+}
+.gate-q { font-size: 0.8125rem; letter-spacing: 0.12em; margin-bottom: 14px; }
+.gate-input { text-align: center; letter-spacing: 0.5em; font-size: 1.25rem; }
+.gate-btn { width: 100%; margin-top: 12px; }
+.gate-err { color: var(--foreground); font-size: 0.6875rem; letter-spacing: 0.2em; margin-top: 10px; }
+body.is-locked { overflow: hidden; }
+
+@keyframes shake-x {
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+.shake { animation: shake-x 0.35s ease; border-color: var(--foreground); }
+
+/* ---------- 记录页备份工具行 ---------- */
+.records-tools {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.records-tools-note { font-size: 0.6875rem; opacity: 0.65; letter-spacing: 0.08em; }
+
 /* ---------- 移动底部导航 / 桌面顶栏切换 ---------- */
 .tabbar {
   position: fixed;

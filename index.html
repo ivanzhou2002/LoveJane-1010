@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Serif+4:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;600&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="lib/leaflet/leaflet.css">
-  <link rel="stylesheet" href="css/style.css?v=22">
+  <link rel="stylesheet" href="css/style.css?v=23">
 </head>
 <body>
 
@@ -144,6 +144,12 @@
         <h2 class="page-title">记录</h2>
         <p class="page-kicker mono">FIELD NOTES · 每一次相遇</p>
       </div>
+      <div class="records-tools">
+        <button type="button" class="btn btn-outline" id="btn-export">导出备份</button>
+        <button type="button" class="btn btn-outline" id="btn-import">导入备份</button>
+        <input type="file" id="import-file" accept="application/json" hidden>
+        <span class="mono records-tools-note">换设备：先导出 JSON，再到新设备导入</span>
+      </div>
       <div id="records-list" class="records-list"></div>
     </section>
 
@@ -174,13 +180,26 @@
         </div>
         <div class="settings-actions">
           <button type="submit" class="btn btn-primary">保存</button>
-          <button type="button" class="btn btn-outline" id="btn-export">导出备份</button>
-          <button type="button" class="btn btn-outline" id="btn-import">导入备份</button>
-          <input type="file" id="import-file" accept="application/json" hidden>
         </div>
       </form>
     </section>
   </main>
+
+  <!-- ============ 访问密码门 ============ -->
+  <div class="gate" id="gate" hidden>
+    <div class="gate-box">
+      <p class="gate-kicker mono">BIRDING JOURNAL · CIXI</p>
+      <h2 class="gate-title">观鸟志</h2>
+      <div class="gate-rule"><span class="hero-square" aria-hidden="true"></span></div>
+      <p class="gate-q mono" id="gate-q"></p>
+      <form id="gate-form" autocomplete="off">
+        <input class="input gate-input mono" id="gate-input" type="password" inputmode="numeric"
+               maxlength="4" placeholder="· · · ·" aria-label="答案" autofocus>
+        <button type="submit" class="btn btn-primary gate-btn">进入</button>
+        <p class="gate-err mono" id="gate-err" hidden>答案不对，再想想</p>
+      </form>
+    </div>
+  </div>
 
   <!-- ============ 底部移动导航 ============ -->
   <nav class="tabbar" aria-label="移动端导航">
@@ -304,6 +323,6 @@
   <script src="js/util.js?v=9"></script>
   <script src="js/db.js?v=4"></script>
   <script src="js/map.js?v=20"></script>
-  <script src="js/app.js?v=23"></script>
+  <script src="js/app.js?v=24"></script>
 </body>
 </html>
