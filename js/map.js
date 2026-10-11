@@ -65,6 +65,8 @@ const MapView = {
       const m = L.marker([lat, lng]).addTo(this.map);
       m._pickSaved = false;
       m._pickCoord = [+lat.toFixed(5), +lng.toFixed(5)];
+      /* 必须在 openPopup 之前登记：popupopen 是同步事件，晚了会拿到上一个点 */
+      this._pickTemp = m;
       m.bindPopup(`
         <div class="pick-pop">
           <p class="pick-coord mono">${lat.toFixed(5)}, ${lng.toFixed(5)}</p>
@@ -72,7 +74,6 @@ const MapView = {
           <button type="button" class="btn btn-primary pick-add">记录</button>
         </div>`).openPopup();
       m.on("popupclose", () => { if (!m._pickSaved) this.map.removeLayer(m); });
-      this._pickTemp = m;
     });
 
     /* popup 每次打开后挂一次「记录」事件 */
