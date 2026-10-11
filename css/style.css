@@ -876,6 +876,15 @@ button { font: inherit; cursor: pointer; }
 .status-tag { font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.14em; padding: 4px 10px; border: 2px solid var(--foreground); display: inline-flex; align-items: center; gap: 6px; }
 .status-tag.confirmed { background: var(--foreground); color: var(--background); }
 
+/* ---------- 页脚版本号 ---------- */
+.site-foot {
+  text-align: center;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  color: var(--muted-fg);
+  padding: 22px 0 6px;
+}
+
 /* ---------- Toast ---------- */
 .toast {
   position: fixed;
