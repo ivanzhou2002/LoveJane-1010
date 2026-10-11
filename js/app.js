@@ -266,12 +266,19 @@ const App = {
       </div>`;
   },
 
-  /* 鸟种实拍照片：加新记录优先，其次情报实拍 */
+  /* 鸟种实拍照片：加新记录优先，其次情报实拍；彩蛋一律问号占位 */
   photoMapOf(name) {
+    const bird = BIRDS.find(b => b.name === name);
+    if (bird?.egg) return "photos/egg-q.svg";
     const rec = [...this.state.records].reverse().find(r => r.bird === name && r.photos?.length);
     if (rec) return rec.photos[0];
     const s = this.state.sightings.find(x => x.bird === name && x.photos?.length);
     return s ? s.photos[0] : "";
+  },
+
+  /* 彩蛋编号：按 BIRDS 中 egg 条目顺序 */
+  eggLabel(b) {
+    return `隐藏彩蛋${BIRDS.filter(x => x.egg).indexOf(b) + 1}`;
   },
 
   /* 图鉴卡片 → 鸟种详情弹窗 */
@@ -297,7 +304,7 @@ const App = {
         <div class="detail-cell"><span class="detail-k">保护级别</span><span class="detail-v">${b.prot === 1 ? "国家一级" : b.prot === 2 ? "国家二级" : "—"}</span></div>
         <div class="detail-cell"><span class="detail-k">初遇</span><span class="detail-v">${got ? `${fmtCN(got.date)} · ${esc(got.spotName || "")}` : "尚未相遇"}</span></div>
       </div>
-      ${this.birdFieldHTML(b)}
+      ${this.birdFieldHTML(hidden ? { ...b, note: "？？？？？？？？？？" } : b)}
       ${!got ? `
       <div class="detail-actions">
         <button type="button" class="btn btn-primary" id="bird-btn-confirm">加新 ✓</button>
