@@ -301,6 +301,7 @@ const BIRDS = [
 
   /* ---- 彩蛋（隐藏住户，图鉴一律显示问号占位图）---- */
   { id:"b901", name:"鹦鹉Oro", latin:"Psittaciformes sp.", cat:"forest", rare:2, live:"留鸟", egg:true, note:"【记】湘海苑4号楼的神秘住客，Jane 的爱宠；全年家养可观测，登门需预约、投喂需经主人同意。" },
+  { id:"b902", name:"神秘访客", latin:"Aves sp.", cat:"forest", rare:2, live:"留鸟", egg:true, note:"【记】吉利汽车研究院A楼的神秘住客，工作日在 Jane 工位一带出没；进园区需访客登记。" },
 ];
 
 /* 观鸟点（lat/lng：GCJ-02）

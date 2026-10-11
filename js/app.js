@@ -281,14 +281,15 @@ const App = {
     const got = this.state.records
       .filter(r => r.bird === name)
       .sort((x, y) => (x.date < y.date ? -1 : 1))[0];
+    const hidden = b.egg && !got;
     const tags = [
       b.prot === 1 ? `<span class="tag tag-invert">国家一级</span>` : b.prot === 2 ? `<span class="tag tag-prot2">国家二级</span>` : "",
       b.rare === 2 ? `<span class="tag tag-invert">珍稀</span>` : (b.rare === 1 ? `<span class="tag">少见</span>` : ""),
     ].filter(Boolean).join("");
     $("#bird-detail").innerHTML = `
       <div class="detail-hero detail-wiki" data-bird="${esc(b.name)}"></div>
-      <h3 class="detail-bird">${esc(b.name)}</h3>
-      <p class="detail-latin">${esc(b.latin)}</p>
+      <h3 class="detail-bird">${esc(hidden ? this.eggLabel(b) : b.name)}</h3>
+      <p class="detail-latin">${hidden ? "?????" : esc(b.latin)}</p>
       <div class="bird-tags">${tags}<span class="tag">${esc(b.live)}</span></div>
       <div class="detail-grid" style="margin-top:18px">
         <div class="detail-cell"><span class="detail-k">居留型</span><span class="detail-v">${esc(b.live)}</span></div>
@@ -544,6 +545,8 @@ const App = {
     const f = this.filters.bird;
 
     const list = BIRDS.filter(b => {
+      /* 彩蛋未加新：搜索也不剧透 */
+      if (q && b.egg && !collectedMap[b.name]) return false;
       if (q && !(b.name.toLowerCase().includes(q) || b.latin.toLowerCase().includes(q))) return false;
       /* 两套筛选可组合：加新状态 × 鸟种等级 */
       if (f === "collected" && !collectedMap[b.name]) return false;
@@ -576,8 +579,8 @@ const App = {
         <div class="bird-card${cls}" data-name="${esc(b.name)}">
           <div class="bird-info">
             <div>
-              <h3 class="bird-name">${esc(b.name)}</h3>
-              <div class="bird-latin">${esc(b.latin)}</div>
+              <h3 class="bird-name">${esc(b.egg && !got ? this.eggLabel(b) : b.name)}</h3>
+              <div class="bird-latin">${b.egg && !got ? "?????" : esc(b.latin)}</div>
             </div>
             <div class="bird-tags">${tags}<span class="tag">${b.live}</span></div>
             <div class="bird-meta">${got ? `初遇 ${fmtCN(got.date)} · ${esc(got.spotName || "")}` : "尚未相遇"}</div>

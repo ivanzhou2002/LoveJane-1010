@@ -1282,6 +1282,23 @@ window.IMPORTED_SIGHTINGS = [
   "confidence": "high",
   "status": "active",
   "egg": true
+ },
+ {
+  "id": "egg-geely-a-visitor",
+  "bird": "神秘访客",
+  "spotKey": "egg-geely-a",
+  "spotName": "吉利汽车研究院A楼",
+  "lat": 30.3455,
+  "lng": 121.1790,
+  "date": "2026-10-11",
+  "note": "Jane 的工位彩蛋。进入园区需访客登记。",
+  "source": "",
+  "photos": [
+   "photos/egg-geely.jpg"
+  ],
+  "confidence": "high",
+  "status": "active",
+  "egg": true
  }
 ];
 window.IMPORTED_SPOTS = [
