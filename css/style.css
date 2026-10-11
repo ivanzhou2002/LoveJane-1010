@@ -1010,3 +1010,41 @@ body.is-locked { overflow: hidden; }
 .leaflet-tooltip-bottom:before { border-bottom-color: var(--foreground); }
 .leaflet-tooltip-left:before { border-left-color: var(--foreground); }
 .leaflet-tooltip-right:before { border-right-color: var(--foreground); }
+
+/* ---------- 标点模式（URL ?pick 开启）：人工取坐标 ---------- */
+.pick-bar {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1150;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: var(--foreground);
+  color: var(--background);
+  padding: 8px 14px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
+}
+.pick-bar .pick-mini {
+  background: none;
+  border: 1px solid rgba(250, 250, 250, 0.45);
+  color: inherit;
+  font: inherit;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.pick-bar .pick-mini:hover { background: var(--background); color: var(--foreground); }
+.pick-pop { display: flex; flex-direction: column; gap: 8px; min-width: 210px; }
+.pick-pop .pick-coord { margin: 0; font-size: 12px; letter-spacing: 0.05em; }
+.pick-pop .pick-input {
+  border: 1px solid #ccc;
+  border-top: none; border-left: none; border-right: none;
+  padding: 4px 2px;
+  font-size: 13px;
+  outline: none;
+}
+.pick-pop .pick-add { width: 100%; }

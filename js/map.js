@@ -41,6 +41,75 @@ const MapView = {
           else if (el.dataset.bname) App.openBirdDetail(el.dataset.bname);
         }));
     });
+    /* URL 带 ?pick 开启标点模式：人工在地图上取坐标，批量复制 */
+    if (new URLSearchParams(location.search).has("pick")) this.enablePicker();
+  },
+
+  /* ---------- 标点模式：点地图 → 命名 → 记录 → 复制全部 ---------- */
+  picker: [],
+  pickMarkers: [],
+  _pickTemp: null,
+  enablePicker() {
+    const bar = document.createElement("div");
+    bar.className = "pick-bar mono";
+    bar.innerHTML = `
+      <span>标点模式</span>
+      <span id="pick-count">已记 0 点</span>
+      <button type="button" class="pick-mini" id="pick-copy">复制全部</button>
+      <button type="button" class="pick-mini" id="pick-clear">清空</button>`;
+    document.body.appendChild(bar);
+    const cnt = bar.querySelector("#pick-count");
+
+    this.map.on("click", e => {
+      const { lat, lng } = e.latlng;
+      const m = L.marker([lat, lng]).addTo(this.map);
+      m._pickSaved = false;
+      m._pickCoord = [+lat.toFixed(5), +lng.toFixed(5)];
+      m.bindPopup(`
+        <div class="pick-pop">
+          <p class="pick-coord mono">${lat.toFixed(5)}, ${lng.toFixed(5)}</p>
+          <input class="pick-input" id="pick-name" placeholder="名称（如：湘海苑4号楼）">
+          <button type="button" class="btn btn-primary pick-add">记录</button>
+        </div>`).openPopup();
+      m.on("popupclose", () => { if (!m._pickSaved) this.map.removeLayer(m); });
+      this._pickTemp = m;
+    });
+
+    /* popup 每次打开后挂一次「记录」事件 */
+    this.map.on("popupopen", () => {
+      const btn = document.querySelector(".pick-add");
+      if (!btn || !this._pickTemp) return;
+      const m = this._pickTemp;
+      btn.addEventListener("click", () => {
+        m._pickSaved = true;
+        const name = (document.getElementById("pick-name")?.value || "").trim() || `未命名${this.picker.length + 1}`;
+        this.picker.push({ name, lat: m._pickCoord[0], lng: m._pickCoord[1] });
+        this.pickMarkers.push(m);
+        m.bindTooltip(String(this.picker.length), { permanent: true, direction: "right" });
+        cnt.textContent = `已记 ${this.picker.length} 点`;
+        this.map.closePopup();
+      });
+    });
+
+    bar.querySelector("#pick-copy").addEventListener("click", async () => {
+      if (!this.picker.length) return alert("还没有记录任何点");
+      const text = this.picker.map(p => `${p.name} ${p.lat},${p.lng}`).join("\n");
+      try { await navigator.clipboard.writeText(text); }
+      catch {
+        const ta = document.createElement("textarea");
+        ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand("copy"); ta.remove();
+      }
+      const b = bar.querySelector("#pick-copy");
+      b.textContent = "已复制 ✓";
+      setTimeout(() => b.textContent = "复制全部", 1500);
+    });
+    bar.querySelector("#pick-clear").addEventListener("click", () => {
+      this.picker = [];
+      this.pickMarkers.forEach(mk => this.map.removeLayer(mk));
+      this.pickMarkers = [];
+      cnt.textContent = "已记 0 点";
+    });
   },
 
   /** 回到慈溪：复位到初始视野 */
