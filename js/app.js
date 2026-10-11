@@ -555,9 +555,9 @@ const App = {
       /* 彩蛋未加新：搜索也不剧透 */
       if (q && b.egg && !collectedMap[b.name]) return false;
       if (q && !(b.name.toLowerCase().includes(q) || b.latin.toLowerCase().includes(q))) return false;
-      /* 两套筛选可组合：加新状态 × 鸟种等级 */
+      /* 两套筛选可组合：加新状态 × 鸟种等级；「未收集」= 图鉴全部 − 已加新（与首页待加新统计同口径） */
       if (f === "collected" && !collectedMap[b.name]) return false;
-      if (f === "target" && !targetSet.has(b.name)) return false;
+      if (f === "target" && collectedMap[b.name]) return false;
       const c = this.filters.birdClass;
       if (c === "common" && b.rare !== 0) return false;
       if (c === "uncommon" && b.rare !== 1) return false;
