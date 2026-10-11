@@ -12,7 +12,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a97de65",
   "photos": [
-   "photos/image45.jpeg"
+   "photos/image44.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -28,7 +28,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a97de65",
   "photos": [
-   "photos/image46.jpeg"
+   "photos/image45.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -44,7 +44,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a97de65",
   "photos": [
-   "photos/image47.jpeg"
+   "photos/image46.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -60,7 +60,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a97de65",
   "photos": [
-   "photos/image48.jpeg"
+   "photos/image47.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -76,7 +76,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a97de65",
   "photos": [
-   "photos/image49.jpeg"
+   "photos/image48.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -92,7 +92,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a97de65",
   "photos": [
-   "photos/image50.jpeg"
+   "photos/image49.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -108,7 +108,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a97de65",
   "photos": [
-   "photos/image51.jpeg"
+   "photos/image50.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -124,7 +124,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image31.jpeg"
+   "photos/image30.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -140,7 +140,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image31.jpeg"
+   "photos/image30.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -156,7 +156,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image32.jpeg"
+   "photos/image31.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -172,7 +172,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image32.jpeg"
+   "photos/image31.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -188,7 +188,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image33.jpeg"
+   "photos/image32.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -204,7 +204,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image33.jpeg"
+   "photos/image32.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -220,7 +220,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image34.jpeg"
+   "photos/image33.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -236,7 +236,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image34.jpeg"
+   "photos/image33.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -252,7 +252,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image35.jpeg"
+   "photos/image34.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -268,7 +268,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image35.jpeg"
+   "photos/image34.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -284,7 +284,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image36.jpeg"
+   "photos/image35.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -300,7 +300,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image36.jpeg"
+   "photos/image35.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -316,7 +316,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image37.jpeg"
+   "photos/image36.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -332,7 +332,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image37.jpeg"
+   "photos/image36.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -348,7 +348,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image38.jpeg"
+   "photos/image37.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -364,7 +364,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image38.jpeg"
+   "photos/image37.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -380,7 +380,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image39.jpeg"
+   "photos/image38.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -396,7 +396,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image39.jpeg"
+   "photos/image38.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -412,7 +412,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image40.jpeg"
+   "photos/image39.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -428,7 +428,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image40.jpeg"
+   "photos/image39.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -444,7 +444,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image41.png"
+   "photos/image40.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -460,7 +460,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image41.png"
+   "photos/image40.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -476,7 +476,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image42.png"
+   "photos/image41.png"
   ],
   "confidence": "high",
   "status": "active"
@@ -492,7 +492,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image42.png"
+   "photos/image41.png"
   ],
   "confidence": "high",
   "status": "active"
@@ -508,7 +508,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image43.jpeg"
+   "photos/image42.png"
   ],
   "confidence": "high",
   "status": "active"
@@ -524,7 +524,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a93f4c6",
   "photos": [
-   "photos/image43.jpeg"
+   "photos/image42.png"
   ],
   "confidence": "high",
   "status": "active"
@@ -540,8 +540,8 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image2.jpeg",
-   "photos/image15.jpeg"
+   "photos/image1.jpeg",
+   "photos/image14.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -557,7 +557,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image3.jpeg"
+   "photos/image2.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -573,7 +573,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image4.jpeg"
+   "photos/image3.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -589,7 +589,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image5.jpeg"
+   "photos/image4.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -605,7 +605,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image6.jpeg"
+   "photos/image5.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -621,7 +621,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image7.jpeg"
+   "photos/image6.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -637,7 +637,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image8.jpeg"
+   "photos/image7.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -653,7 +653,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image9.jpeg"
+   "photos/image8.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -669,7 +669,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image10.jpeg"
+   "photos/image9.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -685,7 +685,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image11.jpeg"
+   "photos/image10.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -701,7 +701,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image12.jpeg"
+   "photos/image11.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -717,7 +717,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image13.jpeg"
+   "photos/image12.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -733,7 +733,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image14.jpeg"
+   "photos/image13.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -749,7 +749,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image16.jpeg"
+   "photos/image15.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -765,7 +765,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image17.jpeg"
+   "photos/image16.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -781,7 +781,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image18.jpeg"
+   "photos/image17.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -797,7 +797,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a8bafbe",
   "photos": [
-   "photos/image19.jpeg"
+   "photos/image18.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -813,7 +813,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a81b3f6",
   "photos": [
-   "photos/image29.jpeg"
+   "photos/image28.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -829,7 +829,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6a81b3f6",
   "photos": [
-   "photos/image30.jpeg"
+   "photos/image29.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -845,7 +845,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/691b4676",
   "photos": [
-   "photos/image20.jpeg"
+   "photos/image19.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -861,7 +861,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/691b4676",
   "photos": [
-   "photos/image21.jpeg"
+   "photos/image20.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -877,7 +877,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/691b4676",
   "photos": [
-   "photos/image21.jpeg"
+   "photos/image20.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -893,7 +893,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/691b4676",
   "photos": [
-   "photos/image22.jpeg"
+   "photos/image21.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -909,7 +909,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/691b4676",
   "photos": [
-   "photos/image23.jpeg"
+   "photos/image22.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -925,7 +925,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/691b4676",
   "photos": [
-   "photos/image23.jpeg"
+   "photos/image22.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -941,7 +941,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/691b4676",
   "photos": [
-   "photos/image24.jpeg"
+   "photos/image23.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -957,7 +957,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/691b4676",
   "photos": [
-   "photos/image25.jpeg"
+   "photos/image24.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -973,7 +973,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/691b4676",
   "photos": [
-   "photos/image25.jpeg"
+   "photos/image24.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -989,7 +989,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/691b4676",
   "photos": [
-   "photos/image26.jpeg"
+   "photos/image25.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1005,7 +1005,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/691b4676",
   "photos": [
-   "photos/image26.jpeg"
+   "photos/image25.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1021,7 +1021,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "记录为路过候鸟",
   "source": "https://www.xiaohongshu.com/explore/691b4676",
   "photos": [
-   "photos/image27.jpeg"
+   "photos/image26.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1037,7 +1037,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "记录为路过候鸟",
   "source": "https://www.xiaohongshu.com/explore/691b4676",
   "photos": [
-   "photos/image27.jpeg"
+   "photos/image26.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1053,7 +1053,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6abfb241",
   "photos": [
-   "photos/image44.jpeg"
+   "photos/image43.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1069,7 +1069,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6ac0f1e6",
   "photos": [
-   "photos/image52.jpeg"
+   "photos/image51.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1085,7 +1085,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6ac0f1e6",
   "photos": [
-   "photos/image53.jpeg"
+   "photos/image52.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1101,7 +1101,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6ac0f1e6",
   "photos": [
-   "photos/image54.jpeg"
+   "photos/image53.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1117,7 +1117,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6ac0f1e6",
   "photos": [
-   "photos/image55.jpeg"
+   "photos/image54.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1133,7 +1133,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6ac0f1e6",
   "photos": [
-   "photos/image56.jpeg"
+   "photos/image55.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1149,7 +1149,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6ac0f1e6",
   "photos": [
-   "photos/image57.jpeg"
+   "photos/image56.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1165,7 +1165,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6ac0f1e6",
   "photos": [
-   "photos/image58.jpeg"
+   "photos/image57.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1181,7 +1181,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6ac0f1e6",
   "photos": [
-   "photos/image59.jpeg"
+   "photos/image58.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1197,7 +1197,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6ac0f1e6",
   "photos": [
-   "photos/image60.jpeg"
+   "photos/image59.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1213,7 +1213,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6ac0f1e6",
   "photos": [
-   "photos/image61.jpeg"
+   "photos/image60.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1228,7 +1228,9 @@ window.IMPORTED_SIGHTINGS = [
   "date": "2025-10-03",
   "note": "",
   "source": "https://www.xiaohongshu.com/explore/6ac0f1e6",
-  "photos": [],
+  "photos": [
+   "photos/image61.jpeg"
+  ],
   "confidence": "high",
   "status": "active"
  },
@@ -1243,7 +1245,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "最高潮高于4m时为最佳观赏期",
   "source": "https://www.xiaohongshu.com/explore/68a7eed6",
   "photos": [
-   "photos/image28.jpeg"
+   "photos/image27.jpeg"
   ],
   "confidence": "high",
   "status": "active"
@@ -1259,7 +1261,7 @@ window.IMPORTED_SIGHTINGS = [
   "note": "最高潮高于4m时为最佳观赏期",
   "source": "https://www.xiaohongshu.com/explore/68a7eed6",
   "photos": [
-   "photos/image28.jpeg"
+   "photos/image27.jpeg"
   ],
   "confidence": "high",
   "status": "active"
