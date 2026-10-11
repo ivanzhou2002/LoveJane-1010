@@ -305,13 +305,13 @@ const App = {
         <div class="detail-cell"><span class="detail-k">初遇</span><span class="detail-v">${got ? `${fmtCN(got.date)} · ${esc(got.spotName || "")}` : "尚未相遇"}</span></div>
       </div>
       ${this.birdFieldHTML(hidden ? { ...b, note: "？？？？？？？？？？" } : b)}
-      ${!got ? `
+      ${!got && !b.egg ? `
       <div class="detail-actions">
         <button type="button" class="btn btn-primary" id="bird-btn-confirm">加新 ✓</button>
       </div>` : ""}`;
     this.openModal("modal-bird");
 
-    /* 未加新：直接从档案发起加新（地点手填/选预设，不依赖小红书情报） */
+    /* 未加新（彩蛋除外）：彩蛋只能去地图找到点位、从情报详情加新 */
     $("#bird-btn-confirm")?.addEventListener("click", () => {
       this.openConfirmForm({ id: null, bird: b.name, spotName: "", lat: null, lng: null });
     });

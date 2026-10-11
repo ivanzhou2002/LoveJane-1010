@@ -1285,7 +1285,7 @@ window.IMPORTED_SIGHTINGS = [
  },
  {
   "id": "egg-geely-a-visitor",
-  "bird": "神秘访客",
+  "bird": "Jane",
   "spotKey": "egg-geely-a",
   "spotName": "吉利汽车研究院A楼",
   "lat": 30.35241,
