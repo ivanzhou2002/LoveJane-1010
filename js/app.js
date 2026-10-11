@@ -561,10 +561,11 @@ const App = {
     $("#birds-grid").innerHTML = list.length ? list.map(b => {
       const got = collectedMap[b.name];
       const cls = got ? " is-collected" : "";
-      /* 未加新 → 黑白照片；已加新 → 彩色 */
+      /* 未加新 → 黑白照片；已加新 → 彩色；彩蛋 → 黑底问号占位 */
       const bw = got ? "" : " is-bw";
-      const photo = photoMap[b.name]
-        ? `<img class="bird-photo${bw}" src="${esc(photoMap[b.name])}" alt="${esc(b.name)}" loading="lazy">`
+      const src = b.egg ? "photos/egg-q.svg" : photoMap[b.name];
+      const photo = src
+        ? `<img class="bird-photo${bw}" src="${esc(src)}" alt="${esc(b.name)}" loading="lazy">`
         : `<span class="bird-photo bird-noimg${bw}" data-bird="${esc(b.name)}" data-latin="${esc(b.latin)}">${esc(b.name.slice(0, 1))}</span>`;
       const tags = [
         b.prot === 1 ? `<span class="tag tag-invert">国家一级</span>` : b.prot === 2 ? `<span class="tag tag-prot2">国家二级</span>` : "",

@@ -298,6 +298,9 @@ const BIRDS = [
   { id:"b365", name:"蚁䴕", latin:"Jynx torquilla", cat:"forest", rare:1, live:"旅鸟", note:"会'歪脖'的啄木鸟，受惊时脖子拧成 S 形蛇颈装死；3-4月及10-11月，地面蚁穴边守株待'蚁'。" },
   { id:"b366", name:"秃鼻乌鸦", latin:"Corvus frugilegus", cat:"forest", rare:1, live:"冬候鸟", note:"嘴基灰白'秃鼻'，黑羽泛紫绿光；11月至次年2月，田野上空大群'哇哇'盘旋。" },
   { id:"b367", name:"达乌里寒鸦", latin:"Coloeus dauuricus", cat:"forest", rare:1, live:"冬候鸟", note:"黑白小鸦，白颈白腹配黑头，像'反穿马甲'；10月至次年3月，农田耕作地成群翻土。" },
+
+  /* ---- 彩蛋（隐藏住户，图鉴一律显示问号占位图）---- */
+  { id:"b901", name:"鹦鹉Oro", latin:"Psittaciformes sp.", cat:"forest", rare:2, live:"留鸟", egg:true, note:"【记】湘海苑4号楼的神秘住客，Jane 的爱宠；全年家养可观测，登门需预约、投喂需经主人同意。" },
 ];
 
 /* 观鸟点（lat/lng：GCJ-02）

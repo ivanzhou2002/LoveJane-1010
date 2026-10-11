@@ -1265,6 +1265,23 @@ window.IMPORTED_SIGHTINGS = [
   ],
   "confidence": "high",
   "status": "active"
+ },
+ {
+  "id": "egg-xianghaiyuan-oro",
+  "bird": "鹦鹉Oro",
+  "spotKey": "egg-xianghaiyuan",
+  "spotName": "湘海苑4号楼",
+  "lat": 30.3208,
+  "lng": 121.2195,
+  "date": "2026-10-11",
+  "note": "Jane 的爱宠，家养常住。登门观测请先预约。",
+  "source": "",
+  "photos": [
+   "photos/egg-oro.jpg"
+  ],
+  "confidence": "high",
+  "status": "active",
+  "egg": true
  }
 ];
 window.IMPORTED_SPOTS = [
