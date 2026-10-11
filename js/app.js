@@ -349,7 +349,7 @@ const App = {
       ${s.note ? `<p class="detail-note">${esc(s.note)}</p>` : ""}
       ${s.photos?.length > 1 ? `
       <div class="detail-photos">
-        ${s.photos.slice(1).map(p => `<a href="${esc(p)}" target="_blank" rel="noopener"><img src="${esc(p)}" alt="${esc(s.bird)}" loading="lazy"></a>`).join("")}
+        ${s.photos.slice(1).map(p => `<button type="button" class="photo-zoom" data-zoom="${esc(p)}"><img src="${esc(p)}" alt="${esc(s.bird)}" loading="lazy"></button>`).join("")}
       </div>` : ""}
       ${bird ? this.birdFieldHTML(bird) : ""}
       <div class="detail-actions">
@@ -641,7 +641,7 @@ const App = {
         </div>
         ${r.photos?.length ? `
         <div class="record-photos">
-          ${r.photos.map(p => `<a href="${p}" target="_blank" rel="noopener"><img src="${p}" alt="${esc(r.bird)}" loading="lazy"></a>`).join("")}
+          ${r.photos.map(p => `<button type="button" class="photo-zoom" data-zoom="${esc(p)}"><img src="${p}" alt="${esc(r.bird)}" loading="lazy"></button>`).join("")}
         </div>` : ""}
         <button type="button" class="del" data-del-rec="${r.id}">删除</button>
       </article>`).join("")
@@ -848,6 +848,16 @@ ${pm}
     $("#cf-photos").addEventListener("change", e => this.handlePhotoPick(e));
     document.querySelectorAll("#cf-finder .chip").forEach(c =>
       c.addEventListener("click", () => this.setChipGroup("#cf-finder", c.dataset.v)));
+
+    // 照片点击放大（data URL 不能用新标签页打开，浏览器会拦截成空白页）
+    document.addEventListener("click", e => {
+      const btn = e.target.closest("[data-zoom]");
+      if (!btn) return;
+      const view = $("#photo-view");
+      view.src = btn.dataset.zoom;
+      view.alt = btn.querySelector("img")?.alt || "照片预览";
+      this.openModal("modal-photo");
+    });
 
     // 弹窗关闭
     document.querySelectorAll(".modal [data-close]").forEach(el =>

@@ -676,9 +676,13 @@ button { font: inherit; cursor: pointer; }
   gap: 8px;
   margin: 4px 0 6px;
 }
-.record-photos a {
+.record-photos a,
+.record-photos .photo-zoom {
   border: 2px solid var(--foreground);
   line-height: 0;
+  padding: 0;
+  background: none;
+  cursor: zoom-in;
 }
 .record-photos img {
   width: 72px; height: 72px;
@@ -811,6 +815,18 @@ button { font: inherit; cursor: pointer; }
   font-size: 0.875rem; padding: 6px 10px;
 }
 .modal-x:hover { border-color: var(--foreground); }
+/* 照片放大弹窗：宽度收窄、图片自适应 */
+.modal-photo-body {
+  width: min(52rem, 100%);
+  padding: 20px;
+}
+.modal-photo-body #photo-view {
+  display: block;
+  width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  background: var(--foreground);
+}
 
 .form-title {
   font-family: var(--serif-display);
@@ -850,8 +866,8 @@ button { font: inherit; cursor: pointer; }
   gap: 10px;
   margin: 0 0 20px;
 }
-.detail-photos a { display: block; border: 2px solid var(--foreground); line-height: 0; }
-.detail-photos a:hover { border-width: 4px; }
+.detail-photos a, .detail-photos .photo-zoom { display: block; border: 2px solid var(--foreground); line-height: 0; padding: 0; background: none; cursor: zoom-in; }
+.detail-photos a:hover, .detail-photos .photo-zoom:hover { border-width: 4px; }
 .detail-photos img {
   width: 100%; height: 104px; object-fit: cover;
   transition: transform 100ms;
